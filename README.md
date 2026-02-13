@@ -1,12 +1,13 @@
-# FlightReservationApplication
-flight booking web application
-
-#Steps to deploy Application
-
-#Clone this repository
+# Flight Reservation System
+---
+## Steps to deploy Application
+1. Clone this repository
+```shell
 git clone https://github.com/shubhamkalsait/Flight-reservation.git
+```
 
-#Install Mysql Server and create database
+2. Install Mysql Server and create database
+```shell
 apt update -y
 apt install mysql-server -y
 mysql_secure_installation
@@ -16,11 +17,12 @@ mysql -uroot -p
 >> flush privileges;
 >> create flightdb;
 >> exit
->>
+```
 
-#Deploy Backend
+3. Deploy Backend
+```shell
 cd Flight-reservation
-cd FlightReservationSystem
+cd FlightReservationApplication
 apt install openjdk-17-jdk -y
 apt install maven -y
 export DATASOURCE_URL="jdbc:mysql://localhost:3306/flightdb"
@@ -29,8 +31,10 @@ export DATASOURCE_PASSWORD="Redhat"
 export FRONTEND_URL="http://localhost:80"
 mvn clean package
 java -jar target/flight*.jar
+```
 
-#Deploy Frontend (open new tab)
+4. Deploy Frontend (open new tab)
+```shell
 cd Flight-reservation
 cd frontend
 apt install nodejs npm -y
@@ -40,3 +44,4 @@ npm run build
 apt install apache2 -y
 cp dist/* /var/www/html/
 systemctl start apache2
+```
